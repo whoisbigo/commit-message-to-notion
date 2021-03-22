@@ -19,6 +19,10 @@ print('getting page..(pageUrl: {})'.format(pageUrl))
 page = client.get_block(pageUrl, force_refresh=True)
 print('getting page done.(title:{})'.format(page.title))
 
+# add test item
+newchild = page.children.add_new(TodoBlock, title="Something to get done")
+newchild.checked = True
+
 commitMessage = os.environ['COMMIT_MESSAGE']
 print('adding item..(commitMessage: {})'.format(commitMessage))
 title = '{date} : {message}'
