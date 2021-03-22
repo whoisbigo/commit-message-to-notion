@@ -5,12 +5,9 @@ from datetime import datetime
 import notion
 import os
 
-commitMessage = os.environ['COMMIT_MESSAGE']
-print('commitMessage: {}'.format(commitMessage))
-
 def get_today_str():
   today = datetime.today()
-  return f'{today.year}년 {today.month}월 {today.day}일' 
+  return f'{today.year}-{today.month}-{today.day}' 
 
 print('creating client..')
 tokenV2 = os.environ['NOTION_TOKEN_V2']
@@ -20,7 +17,7 @@ print('creating client done.')
 pageUrl = os.environ['NOTION_PAGE_URL']
 print('getting page..(pageUrl: {})'.format(pageUrl))
 page = client.get_block(pageUrl, force_refresh=True)
-print('getting page done.')
+print('getting page done.(title:{})'.format(page.title))
 
 commitMessage = os.environ['COMMIT_MESSAGE']
 print('adding item..(commitMessage: {})'.format(commitMessage))
