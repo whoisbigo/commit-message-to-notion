@@ -14,8 +14,8 @@ tokenV2 = os.environ['NOTION_TOKEN_V2']
 client = NotionClient(token_v2=tokenV2)
 print('creating client done.')
 
-print('getting page..')
 pageUrl = os.environ['NOTION_PAGE_URL']
+print('getting page..(pageUrl: {})'.format(pageUrl))
 page = client.get_block(pageUrl, force_refresh=True)
 print('getting page done.')
 
