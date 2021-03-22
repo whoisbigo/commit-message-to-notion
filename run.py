@@ -5,6 +5,9 @@ from datetime import datetime
 import notion
 import os
 
+commitMessage = os.environ['COMMIT_MESSAGE']
+print('commitMessage: {}'.format(commitMessage))
+
 def get_today_str():
   today = datetime.today()
   return f'{today.year}년 {today.month}월 {today.day}일' 
@@ -19,8 +22,8 @@ print('getting page..(pageUrl: {})'.format(pageUrl))
 page = client.get_block(pageUrl, force_refresh=True)
 print('getting page done.')
 
-print('adding item..')
 commitMessage = os.environ['COMMIT_MESSAGE']
+print('adding item..(commitMessage: {})'.format(commitMessage))
 title = '{date} : {message}'
 page.children.add_new(BulletedListBlock, title=title.format(date=get_today_str, message=commitMessage))
 print('adding item done.')
