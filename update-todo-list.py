@@ -20,6 +20,6 @@ commitMessage = os.environ['COMMIT_MESSAGE']
 print('adding item..(commitMessage: {})'.format(commitMessage))
 #title = '{date} : {message}'
 title = '{commitMessage}'
-newchild = page.children.add_new(TodoBlock, title=title)
+newchild = page.children.add_new(TodoBlock, title=title.format(commitMessage))
 newchild.checked = True
 print('adding item done.')
