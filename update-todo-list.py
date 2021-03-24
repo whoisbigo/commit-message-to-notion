@@ -4,6 +4,16 @@ from notion.collection import *
 from datetime import datetime
 import notion
 import os
+import json
+
+def get_commit_messages():
+  messageList = []
+  with open(os.environ['GITHUB_EVENT_PATH']) as json_file:
+    webhookEventPayload = json.load(json_file)
+    for commitItem in webhookEventPayload['commits']:
+      messageList = messageList + commitItem.message.split(, )
+
+  return messageList
 
 def get_today_str():
   today = datetime.today()
@@ -35,8 +45,8 @@ if today is None:
 
 today.move_to(page, "first-child")
 
-commitMessage = os.environ['COMMIT_MESSAGE']
-messageList = commitMessage.split(', ')
+#commitMessage = os.environ['COMMIT_MESSAGE']
+messageList = get_commit_messages()
 
 for message in messageList:
   print('adding item..(commitMessage: {})'.format(commitMessage))
