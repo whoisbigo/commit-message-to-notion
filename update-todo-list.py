@@ -25,6 +25,10 @@ client = NotionClient(token_v2=tokenV2)
 print('creating client done.')
 
 pageUrl = os.environ['NOTION_PAGE_URL']
+pageUrlEnvName = os.environ['NOTION_PAGE_URL_ENV_NAME']
+if not(pageUrlEnvName is None):
+  pageUrl = os.environ[pageUrlEnvName]
+
 print('getting page..(pageUrl: {})'.format(pageUrl))
 page = client.get_block(pageUrl, force_refresh=True)
 print('getting page done.(title:{})'.format(page.title))
