@@ -30,7 +30,7 @@ for child in page.children:
     today = child
     break
 
-if today == None:
+if today is None:
   today = page.children.add_new(ToggleBlock, title=titleToday)
 
 today.move_to(page, "first-child")
