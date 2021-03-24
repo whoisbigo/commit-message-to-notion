@@ -11,7 +11,7 @@ def get_commit_messages():
   with open(os.environ['GITHUB_EVENT_PATH']) as json_file:
     webhookEventPayload = json.load(json_file)
     for commitItem in webhookEventPayload['commits']:
-      messageList = messageList + commitItem.message.split(, )
+      messageList = messageList + commitItem.message.split(', ')
 
   return messageList
 
@@ -43,7 +43,7 @@ for child in page.children:
 if today is None:
   today = page.children.add_new(ToggleBlock, title=titleToday)
 
-today.move_to(page, "first-child")
+today.move_to(page, 'first-child')
 
 #commitMessage = os.environ['COMMIT_MESSAGE']
 messageList = get_commit_messages()
