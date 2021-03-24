@@ -42,6 +42,6 @@ for message in messageList:
   print('adding item..(commitMessage: {})'.format(commitMessage))
   #title = '{date} : {message}'
   title = '{message}'
-  newchild = today.children.add_new(TodoBlock, title=title.format(message=commitMessage))
+  newchild = today.children.add_new(TodoBlock, title=title.format(message=message))
   newchild.checked = True
   print('adding item done.')
