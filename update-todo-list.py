@@ -11,7 +11,7 @@ def get_commit_messages():
   with open(os.environ['GITHUB_EVENT_PATH']) as json_file:
     webhookEventPayload = json.load(json_file)
     for commitItem in webhookEventPayload['commits']:
-      messageList = messageList + commitItem.message.split(', ')
+      messageList = messageList + commitItem['message'].split(', ')
 
   return messageList
 
