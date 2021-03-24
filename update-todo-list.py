@@ -49,7 +49,7 @@ today.move_to(page, 'first-child')
 messageList = get_commit_messages()
 
 for message in messageList:
-  print('adding item..(commitMessage: {})'.format(commitMessage))
+  print('adding item..(message: {})'.format(message))
   #title = '{date} : {message}'
   title = '{message}'
   newchild = today.children.add_new(TodoBlock, title=title.format(message=message))
